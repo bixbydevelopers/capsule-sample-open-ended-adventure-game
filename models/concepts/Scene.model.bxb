@@ -1,0 +1,24 @@
+structure (Scene) {
+
+  property (name) {
+    type (core.Name)
+    min (Required) max (One)
+    visibility (Private)
+    description("The scene's name")
+  }
+
+  property (image) {
+    description (Image depicting this scene)
+    type (image.Image)
+    min (Optional) max (One)
+    visibility (Private)
+  }
+
+  property (objects) {
+    type (Object)
+    min (Optional) max (Many)
+    visibility (Private)
+    description (objects in this scene)
+  }
+
+}

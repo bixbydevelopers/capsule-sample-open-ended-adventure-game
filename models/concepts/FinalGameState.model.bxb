@@ -1,0 +1,6 @@
+structure (FinalGameState) {
+  description (Final game state.)
+
+  role-of (GameState)
+
+}

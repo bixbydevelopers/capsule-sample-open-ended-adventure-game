@@ -1,0 +1,13 @@
+result-view {
+  match {
+    Game(game)
+  }
+
+  render {
+    layout-macro ("game") {
+      param(game) {
+        expression (game)
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+train (t-48rv408snr4krq94v0vgvqmub) {
+  utterance ("[g:Command:prompt] (Turn on)[v:ActionName:TurnOn] the (switch)[v:ObjectName:'LightSwitch']")
+  plan (Y2BhkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xNxWbrH9SVmpyCViWmYGRgQlIMgBpEIQAEB8sCgA=)
+  last-modified (1555453305644)
+}

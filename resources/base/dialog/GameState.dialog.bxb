@@ -1,0 +1,4 @@
+dialog (Result) {
+  match: GameState(state)
+  template ("#{macro('game-state-statement', state)}")
+}

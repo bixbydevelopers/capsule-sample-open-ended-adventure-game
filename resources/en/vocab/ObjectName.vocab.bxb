@@ -1,0 +1,5 @@
+vocab (ObjectName) {
+  "Wall" { "wall" }
+  "LightSwitch" { "light switch" "light" "lights" "switch" }
+  "Door" { "door" }
+}

@@ -1,0 +1,39 @@
+layout-macro-def(game) {
+  params {
+    param (game) {
+      type (Game)
+      min (Required)
+      max (One)
+    }
+  }
+  content {
+    compound-card {
+      content {
+        if (exists(game.image)) {
+          image-card {
+            title-area {
+              slot1 {
+                text ("#{value(game.name)}")
+              }
+            }
+            image-url {
+              template ("[#{value(game.image.url)}]")
+            }
+          }          
+        } else {
+          title-area {
+            slot1 {
+              text ("#{value(game.name)}")
+            }
+          }
+        }
+        paragraph {
+          style (Detail_L)
+          value {
+            template ("#{value(game.initialDescription)}")
+          }
+        }
+      }
+    }
+  }
+}

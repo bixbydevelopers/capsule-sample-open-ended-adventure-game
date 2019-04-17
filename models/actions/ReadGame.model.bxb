@@ -1,0 +1,5 @@
+action (ReadGame) {
+  description (Finds a game)
+  type (Constructor)
+  output (Game)
+}

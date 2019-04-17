@@ -1,0 +1,25 @@
+structure (Object) {
+
+  property (name) {
+    type (ObjectName)
+    min (Required) max (One)
+    visibility (Private)
+    description("The object's name.")
+  }
+
+  property (actionResponses) {
+    type (ActionResponse)
+    min (Optional) max (Many)
+    visibility (Private)
+    description ("The affect of specific actions on this action.")
+  }
+
+  property (state) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("Current state of the object")
+  }
+
+
+}

@@ -1,0 +1,25 @@
+action (PlayGame) {
+  description (Keep prompting the user for answers until game is completed.)
+  type (Commit)
+  collect {
+    input (state) {
+      type (GameState)
+      min (Required) max (One)
+      default-init {
+        intent {
+          goal: StartGame
+        }
+      }
+      validate {
+        if (!state.completed) {
+          replan {
+            intent {
+              goal: UpdateGame
+            }
+          }
+        }
+      }
+    }
+  }
+  output (FinalGameState)
+}

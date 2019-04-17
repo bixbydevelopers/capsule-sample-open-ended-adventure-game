@@ -1,0 +1,78 @@
+structure (Game) {
+
+  property (name) {
+    type (core.Name)
+    min (Required) max (One)
+    visibility (Private)
+    description("The game's name.")
+  }
+
+  property (image) {
+    description (Image describing this game)
+    type (image.Image)
+    min (Optional) max (One)
+    visibility (Private)
+  }
+  
+  property (initialDescription) {
+    type (core.Text)
+    min (Required) max (One)
+    visibility (Private)
+    description("Game starts with this description.")
+  }
+
+  property (endDescription) {
+    type (core.Text)
+    min (Required) max (One)
+    visibility (Private)
+    description("Game ends with this description.")
+  }
+
+  property (hints) {
+    type (core.Text)
+    min (Optional) max (Many)
+    visibility (Private)
+    description("Hints to give to the user if they ask for help.")
+  }
+
+  property (defaultActionName) {
+    type (ActionName)
+    visibility (Private)
+    min (Required) max (One)
+    description ("What is the default action to take if user command does not include an action name, e.g. if user just says 'door!' and defaultAction is 'see' then user command will be interpreted as applying 'See' to 'Door'")
+  }
+  property (defaultActionResponse) {
+    type (core.Text)
+    min (Required) max (One)
+    visibility (Private)
+    description ("The default affect of any actions ignoring any context (ignoring the scene and the object they apply too)")
+  }
+
+  property (actionResponses) {
+    type (ActionResponse)
+    min (Optional) max (Many)
+    visibility (Private)
+    description ("The default affect of specific actions ignoring any context (ignoring the scene and the object they apply too)")
+  }
+
+  property (scenes) {
+    type (Scene)
+    min (Optional) max (Many)
+    visibility (Private)
+    description ("Hints to give to the user if they asked for help")
+  }
+
+  property (startScene) {
+    type (core.Text)
+    min (Required) max (One)
+    visibility (Private)
+    description("Current scene")
+  }
+
+  property (endScene) {
+    type (core.Text)
+    min (Required) max (One)
+    visibility (Private)
+    description("Current scene")
+  }
+}

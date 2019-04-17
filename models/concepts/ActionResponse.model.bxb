@@ -1,0 +1,38 @@
+structure (ActionResponse) {
+  description (Describes how to respond to an action.)
+
+  property (action) {
+    type (ActionName)
+    min (Required) max (One)
+    visibility (Private)
+    description("The applied action.")
+  }
+
+  property (state) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("The current state of the object when action is applied.")
+  }
+
+  property (newState) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("The new state of the object when action is applied.")
+  }
+
+  property (newScene) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("The new scene, if user enters a new scene after action is applied.")
+  }
+
+  property (say) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("What to say after action is applied.")
+  }
+}

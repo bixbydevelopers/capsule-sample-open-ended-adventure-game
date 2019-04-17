@@ -1,0 +1,5 @@
+train (t-umjpc1jo9y1qauyzge0kqz9th) {
+  utterance ([g:PlayGame] Start an adventure game)
+  plan (Y2BmUEitSMwtyEnVS0wpS80rKS1K1XPLzEvMcU/MTQ0uSSxJZZDCVBGQk1gJUsAgjSmH0MjEwAjEDECSkYEBRgMA)
+  last-modified (1555373569767)
+}

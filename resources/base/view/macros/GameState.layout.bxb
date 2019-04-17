@@ -1,0 +1,29 @@
+layout-macro-def(game-state) {
+  params {
+    param (state) {
+      type (GameState)
+      min (Required)
+      max (One)
+    }
+  }
+  content {
+    if (exists(state.game.scenes[state.sceneIndex].image)) {
+      image-card {
+        title-area {
+          slot1 {
+            text ("#{value(state.game.scenes[state.sceneIndex].name)}")
+          }
+        }
+        image-url {
+          template ("[#{value(state.game.scenes[state.sceneIndex].image.url)}]")
+        }
+      }          
+    } else {
+      title-area {
+        slot1 {
+          text ("#{value(state.game.scenes[state.sceneIndex].name)}")
+        }
+      }
+    }
+  }
+}

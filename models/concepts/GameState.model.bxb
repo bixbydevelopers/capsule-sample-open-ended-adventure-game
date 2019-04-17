@@ -1,0 +1,46 @@
+structure (GameState) {
+  description (The game state.)
+  features {
+    transaction
+  }
+
+  property (game) {
+    type (Game)
+    min (Required) max (One)
+    visibility (Private)
+  }
+
+  property (sceneIndex) {
+    type (core.Integer)
+    min (Required) max (One)
+    visibility (Private)
+    description(Index to the current scene)
+  }
+
+  property (endSceneIndex) {
+    type (core.Integer)
+    min (Required) max (One)
+    visibility (Private)
+    description(Index to the current scene)
+  }
+
+  property (say) {
+    type (core.Text)
+    min (Required) max (One)
+    visibility (Private)
+    description(The current text that should appear in the dialog)
+  }
+
+  property (started) {
+    type (core.Boolean)
+    min (Optional) max (One)
+    visibility (Private)
+  }
+
+  property (completed) {
+    type (core.Boolean)
+    min (Optional) max (One)
+    visibility (Private)
+  }
+
+}

@@ -1,0 +1,16 @@
+action (UpdateGame) {
+  description (Evaluate user's answer and updates the game state.)
+  type (UpdateTransaction)
+  collect {
+    input (state) {
+      type (GameState)
+      min (Required) max (One)
+    }
+    input (command) {
+      type (Command)
+      min (Required) max (One)
+    }
+  }
+  
+  output (GameState)
+}

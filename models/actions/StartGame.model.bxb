@@ -1,0 +1,17 @@
+action (StartGame) {
+  description (Starts a game and initializes the game state)
+  type (BeginTransaction)
+  collect {
+    input (game) {
+      type (Game)
+      min (Required) max (One)
+      default-init {
+        intent {
+          goal: ReadGame
+        }
+      }
+    }
+  }
+  
+  output (GameState)
+}

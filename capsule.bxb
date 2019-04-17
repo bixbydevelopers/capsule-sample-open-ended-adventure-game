@@ -1,0 +1,21 @@
+capsule {
+  id (example.adventure)
+  version (1.0.0)
+  format(3)
+  runtime-flags {
+    support-halt-effect-in-computed-inputs
+    modern-prompt-rejection
+  }  
+  targets {
+    target (bixby-mobile-en-US)
+  }
+  capsule-imports {
+    import (viv.core) {
+      as (core)
+    }
+    import (viv.image) {
+      as (image) version (2.12.0)
+    }
+  }
+}
+

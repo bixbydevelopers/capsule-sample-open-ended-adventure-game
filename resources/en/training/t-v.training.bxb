@@ -1,0 +1,5 @@
+train (t-v9j9r5dh8qdyceomggk578cms) {
+  utterance ("[g:Command:prompt] (Walk)[v:ActionName:Walk]")
+  plan (Y2BmkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xN5WBiYERiBmAJCMDCDBBMAA=)
+  last-modified (1555389017036)
+}

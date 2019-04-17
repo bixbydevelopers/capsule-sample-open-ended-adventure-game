@@ -1,0 +1,16 @@
+template-macro-def (game-state-statement) {
+  params {
+    param (state) {
+      type (GameState)
+      min (Required)
+      max (One)
+    }
+  }
+  content {
+    if (state.completed) {
+      template ("#{value(state.say)} You did it! Good job!")
+    } else {
+      template ("#{value(state.say)}")
+    }
+  }
+}

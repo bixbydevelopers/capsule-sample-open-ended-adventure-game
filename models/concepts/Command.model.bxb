@@ -1,0 +1,10 @@
+structure (Command) {
+  property (actionName) {
+    type (ActionName)
+    visibility (Public)
+  }
+  property (objectName) {
+    type (ObjectName)
+    visibility (Public)
+  }
+}

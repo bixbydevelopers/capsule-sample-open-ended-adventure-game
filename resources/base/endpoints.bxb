@@ -1,0 +1,23 @@
+endpoints {
+  action-endpoints {
+    action-endpoint (ReadGame) {
+      local-endpoint (ReadGame.js)
+    }
+    action-endpoint (StartGame) {
+      accepted-inputs (game)
+      local-endpoint (StartGame.js)
+    }
+    action-endpoint (UpdateGame) {
+      accepted-inputs (state, command)
+      local-endpoint (UpdateGame.js)
+    }
+    action-endpoint (PlayGame) {
+      accepted-inputs (state)
+      local-endpoint (PlayGame.js)
+    }
+    action-endpoint (ConstructCommand) {
+      accepted-inputs (actionName, objectName)
+      local-endpoint (ConstructCommand.js)
+    }
+  }
+}

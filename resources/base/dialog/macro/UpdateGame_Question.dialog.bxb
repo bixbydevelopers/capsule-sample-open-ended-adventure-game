@@ -1,0 +1,12 @@
+template-macro-def (update-game-question) {
+  params {
+    param (state) {
+      type (GameState)
+      min (Required)
+      max (One)
+    }
+  }
+  content {
+    template("#{macro('game-state-statement', state)} What do you want to do?")
+  }
+}

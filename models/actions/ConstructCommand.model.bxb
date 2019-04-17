@@ -1,0 +1,22 @@
+action (ConstructCommand) {
+  type (Constructor)
+  collect {
+    input (actionName) {
+      type (ActionName)
+      min (Optional) max (One)
+      description (The action to apply)
+      default-select { //we don't want a prompt for action, just pick first one
+        with-rule { select-first }
+      }
+    }
+    input (objectName) {
+      type (ObjectName)
+      min (Optional) max (One)
+      description (The object which the action is applied to)
+      default-select { //we don't want a prompt for object, just pick first one
+        with-rule { select-first }
+      }
+    }
+  }
+  output (Command)
+}
