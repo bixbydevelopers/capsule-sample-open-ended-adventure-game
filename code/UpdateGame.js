@@ -23,9 +23,16 @@ exports.function = function(state, command) {
     actionResponse = lib.findActionResponse(state.game.actionResponses, actionName, null)
   }
 
+  state.stepsSinceRecognizedCommand = -1 //reset
   state.say = actionResponse.say
+
   if (object && actionResponse.newState) {
     object.state = actionResponse.newState
+  }
+
+  if (actionResponse.newImage) {
+    console.log("newImage", actionResponse.newImage)
+    scene.image.url = actionResponse.newImage
   }
 
   if (actionResponse.newScene) {

@@ -1,0 +1,12 @@
+action (IncrementGameStep) {
+  description (Increment the GameState's step)
+  type (UpdateTransaction)
+  collect {
+    input (state) {
+      type (GameState)
+      min (Required) max (One)
+    }
+  }
+  
+  output (GameState)
+}

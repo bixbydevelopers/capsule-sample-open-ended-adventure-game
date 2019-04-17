@@ -10,7 +10,9 @@ exports.function = function(game) {
     sceneIndex: sceneIndex,
     endSceneIndex: endSceneIndex,
     completed: game.endSceneIndex == sceneIndex,
-    say: game.initialDescription
+    say: game.description,
+    step: 0,
+    stepsSinceRecognizedCommand: -1
   }
 
   return state

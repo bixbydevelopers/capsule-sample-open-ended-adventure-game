@@ -7,6 +7,10 @@ endpoints {
       accepted-inputs (game)
       local-endpoint (StartGame.js)
     }
+    action-endpoint (IncrementGameStep) {
+      accepted-inputs (state)
+      local-endpoint (IncrementGameStep.js)
+    }
     action-endpoint (UpdateGame) {
       accepted-inputs (state, command)
       local-endpoint (UpdateGame.js)

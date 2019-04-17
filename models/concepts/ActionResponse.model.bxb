@@ -29,6 +29,13 @@ structure (ActionResponse) {
     description("The new scene, if user enters a new scene after action is applied.")
   }
 
+  property (newImage) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("New image URL to display after applying the action.")
+  }
+
   property (say) {
     type (core.Text)
     min (Optional) max (One)

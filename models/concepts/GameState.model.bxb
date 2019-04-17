@@ -43,4 +43,19 @@ structure (GameState) {
     visibility (Private)
   }
 
+  property (step) {
+    type (core.Integer)
+    min (Required) max (One)
+    visibility (Private)
+    description(How many times was the user prompted for a command)
+  }
+
+  property (stepsSinceRecognizedCommand) {
+    type (core.Integer)
+    min (Required) max (One)
+    visibility (Private)
+    description(How many steps ago since last recognized command)
+  }
+
+
 }

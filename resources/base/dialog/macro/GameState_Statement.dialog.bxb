@@ -8,9 +8,21 @@ template-macro-def (game-state-statement) {
   }
   content {
     if (state.completed) {
-      template ("#{value(state.say)} You did it! Good job!")
+      if (state.step < 5) {
+        template ("#{value(state.say)} You did it! That was quick! Good job!")
+      } else-if (state.step > 10) {
+        template ("#{value(state.say)} It took you a while but you did it! Good job!")
+      } else {
+        template ("#{value(state.say)} You did it! Good job!")
+      }
     } else {
-      template ("#{value(state.say)}")
+      if (state.stepsSinceRecognizedCommand == 1) {
+        template ("I am not sure I understand. Try something else.")
+      } else-if (state.stepsSinceRecognizedCommand > 1) {
+        template ("I didn't get that either. You can ask for help.")
+      } else {
+        template ("#{value(state.say)}")
+      }
     }
   }
 }

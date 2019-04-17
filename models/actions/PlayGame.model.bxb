@@ -15,6 +15,7 @@ action (PlayGame) {
           replan {
             intent {
               goal: UpdateGame
+              route: IncrementGameStep
             }
           }
         }

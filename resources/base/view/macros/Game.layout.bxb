@@ -30,7 +30,7 @@ layout-macro-def(game) {
         paragraph {
           style (Detail_L)
           value {
-            template ("#{value(game.initialDescription)}")
+            template ("#{value(game.description)}")
           }
         }
       }

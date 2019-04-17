@@ -5,10 +5,8 @@ module.exports = [
     //The game's name
     name: "Escape Room!",
     //Game starts with this description.
-    initialDescription: "You wake up in an unfamiliar room. The room is too dark. You can't see anything but you are sure this is not your room.",
-    //Game ends with this description.
-    endDescription: "Yes! You made it! This is your bright and beautiful room! Good job!",
-    startScene: "dark room", //game starts in this scene
+    description: "You wake up in an unfamiliar room. The room is too dark. You can't see anything but you are sure this is not your room.",
+    startScene: "unknown room", //game starts in this scene
     endScene: "bright room", //game ends when user enters this scene
 
     //What is the default action to take if user command does not include an action name, e.g. if user just says "door!" and defaultAction is "see" then user command will be interpreted as applying "See" to "Door"
@@ -36,9 +34,9 @@ module.exports = [
     ],
     scenes: [
     {
-      name: "Dark room", //scene name
+      name: "Unknown room", //scene name
       image: {
-        url: '/images/darkRoom.jpg' //scene image
+        url: '/images/emptyRoom_lightsOff.jpg' //scene image
       },
       objects: [ //objects in the dark room, object names should match the symbols in ObjectName.model.bxb enum
         {
@@ -54,7 +52,7 @@ module.exports = [
             {action: "Kick", state: "close", say: "Bang! You kicked the closed door. It's still close. There should be a better way to open the door."},
             {action: "Kick", state: "open", newState: "close", say: "Bang! You shut the door close. That did hurt a little."},
             {action: "Sing", say: "You sing to the door. You don't have the best voice but I think the door liked it."},
-            {action: "Open", state: "close", newState: "open", say: "You open the door, there is another room. You walk over to the new room.", newScene: "bright room"},
+            {action: "Open", state: "close", newState: "open", newScene: "bright room", say: "You open the door, there is another room. You walk over to the new room. Yes! This is your bright and beautiful room!"},
             {action: "TurnOn", say: "You can't turn the door on. You can open or close it. I thought you'd know that."},
             {action: "TurnOff", say: "Ok, it's turned off. Not really. You should know better."},
           ]
@@ -71,8 +69,8 @@ module.exports = [
             {action: "Pick", say: "You can't pick it. It's attached to the wall."},
             {action: "Kick", say: "It's too high for you to kick it. There should be a better way to operate this thing. Hmmm."},
             {action: "TurnOn", state: "on", say: "The light is already on! What an ugly room. Nothing here but a door."},
-            {action: "TurnOn", state: "off", newState: "on", say: "Click. Light! Ooh look the room is empty. But there is a door."},
-            {action: "TurnOff", state: "on", newState: "off", say: "Click. Darkness! You can't see anything anymore."},
+            {action: "TurnOn", state: "off", newState: "on", newImage:"/images/emptyRoom_lightsOn.jpg", say: "Click. Light! Ooh look the room is empty. But there is a door."},
+            {action: "TurnOff", state: "on", newState: "off", newImage:"/images/emptyRoom_lightsOff.jpg", say: "Click. Darkness! You can't see anything anymore."},
             {action: "TurnOff", state: "off", say: "It's already off."},
           ]
         },

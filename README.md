@@ -1,16 +1,11 @@
 <p align="Center">
   <img src="https://bixbydevelopers.com/dev/docs-assets/resources/dev-guide/bixby_logo_github-11221940070278028369.png">
   <br/>
-  <h1 align="Center">Bixby Facts Sample Capsule</h1>
+  <h1 align="Center">Bixby Adventur Game Sample Capsule</h1>
 </p>
 
 ## Overview
 
-Do you have some interesting facts about a hobby or passion to share? Do you have a set of LOL jokes to share? The facts sample capsule is the perfect place to share that content by building a Bixby capsule.
-
-Lots of the basic building blocks of a Bixby capsule are highlighted; This is a great capsule to start learning how to develop for Bixby.
-
-You can easily customize this capsule with your own content without any development! Just use the spreadsheet in the `contentUtility` folder and cut and paste from there into the `content.js` file, update the `capsule.id` and `training` as necessary and you have made this capsule your own!
 
 ## How to get started
 
@@ -21,26 +16,29 @@ You can easily customize this capsule with your own content without any developm
 
 
 ## How to try
-Ask about facts. Try these:
+Ask to start an adventure game:
 
 ```
-Tell me a fact (Bixby says a random fact)
-
-Tell me a fact about dogs (Bixby says a fact about dogs)
+Start an adventure game.
 ```
-Or ask about jokes. Try these:
+You can ask help to find out what's possible:
 ```
-Tell me a joke (Bixby says a random joke (fact)
-
-Tell me a cat joke (Bixby says a random joke (fact) about cats)
+Help!
+```
+Try applying different actions:
+```
+Walk around!
+```
+```
+Kick the wall
 ```
 
 ## How to customize
-* Put your own content (facts and associated tags and images) into `code/content.js` - You may also use the spreadsheet located in `contentUtility/CreateContent.xslx` to create content
-* If you want to use images in your content you can either use a web URL or you can save your image under `assets/images` and refer to them with a relative path, e.g. `images/cow.png` (you might have to wait a little until the IDE uploads images to the cloud)
+* Update the game data (name, scenes, objects, actions and action responses and other associated data) into `code/game.js`
+* Change the recognized actions and objects in the capsule model by modifying `models/concepts/ActionName.model.bxb` and `models/concepts/ObjectName.model.bxb`, make sure to also update the vocab files, the training and the data to comply to the new model changes.
+* If you want to use images for the different scenes in the game you can either use a web URL or you can save your image under `assets/images` and refer to them with a relative path, e.g. `images/cow.png` (you might have to wait a little until the IDE uploads images to the cloud)
 * Change the capsule id to reflect your organization and your content. The capsule id is defined in the `capsule.bxb` file
 * You can customize the NoResult dialog (`resources/base/dialog/Content_NoResult.dialog.bxb`)
-* Add more training / change the training
 * Have fun!
 
 ---

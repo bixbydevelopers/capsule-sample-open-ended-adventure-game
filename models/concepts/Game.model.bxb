@@ -14,18 +14,11 @@ structure (Game) {
     visibility (Private)
   }
   
-  property (initialDescription) {
+  property (description) {
     type (core.Text)
     min (Required) max (One)
     visibility (Private)
     description("Game starts with this description.")
-  }
-
-  property (endDescription) {
-    type (core.Text)
-    min (Required) max (One)
-    visibility (Private)
-    description("Game ends with this description.")
   }
 
   property (hints) {
