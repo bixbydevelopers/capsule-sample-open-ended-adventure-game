@@ -7,6 +7,12 @@ template-macro-def (update-game-question) {
     }
   }
   content {
-    template("#{macro('game-state-statement', state)} What do you want to do?")
+    choose (Random) {
+      template("#{macro('game-state-statement', state)} What do you want to do?")
+      template("#{macro('game-state-statement', state)} What do you want to do now?")
+      if (state.step > 1) {
+        template("#{macro('game-state-statement', state)} What do you want to do next?")    
+      }
+    }
   }
 }

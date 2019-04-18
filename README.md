@@ -5,7 +5,7 @@
 </p>
 
 ## Overview
-
+This capsule can be used as a reference for building adventure games for Bixby.
 
 ## How to get started
 
@@ -16,29 +16,33 @@
 
 
 ## How to try
-Ask to start an adventure game:
+Just ask Bixby to start an adventure game:
 
 ```
 Start an adventure game.
 ```
-You can ask help to find out what's possible:
+
+Then try out different inputs to figure out how you can escape the room. You can always ask for `Help` if you ran out of ideas.
+
 ```
 Help!
 ```
-Try applying different actions:
+
+The idea is to apply different actions and gather enough clues on how to escape the room, for example you can say:
 ```
 Walk around!
 ```
+Or you can say:
 ```
 Kick the wall
 ```
 
 ## How to customize
-* Update the game data (name, scenes, objects, actions and action responses and other associated data) into `code/game.js`
-* Change the recognized actions and objects in the capsule model by modifying `models/concepts/ActionName.model.bxb` and `models/concepts/ObjectName.model.bxb`, make sure to also update the vocab files, the training and the data to comply to the new model changes.
+* Update the game data (name, description, scenes, objects, actions and action responses and other associated data) in `code/game.js`
+* Make sure to update the model if you add, remove or rename any action or objects. Actions and objects are modeled as an enum in `models/concepts/ActionName.model.bxb` and `models/concepts/ObjectName.model.bxb`, you also have to update the associated vocab files: `resources/en/vocab/ActionName.vocab.bxb` and `resources/en/vocab/ObjectName.vocab.bxb`, and you need to update the training files too.
 * If you want to use images for the different scenes in the game you can either use a web URL or you can save your image under `assets/images` and refer to them with a relative path, e.g. `images/cow.png` (you might have to wait a little until the IDE uploads images to the cloud)
 * Change the capsule id to reflect your organization and your content. The capsule id is defined in the `capsule.bxb` file
-* You can customize the NoResult dialog (`resources/base/dialog/Content_NoResult.dialog.bxb`)
+* You can customize the game completion statement (`resources/base/dialog/macro/GameState_Statement.dialog.bxb`) and the question asked from the user at each step: (`resources/base/dialog/macro/GameState_Statement.dialog.bxb`)
 * Have fun!
 
 ---

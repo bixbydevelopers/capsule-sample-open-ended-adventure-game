@@ -26,12 +26,12 @@ function findItemByName(items, name) {
   return null
 }
 
-function findActionResponse(actionResponses, actionName, objectState) {
-  if (actionResponses) {
-    for (var i=0; i<actionResponses.length; i++) {
-      if (actionName.toLowerCase() == actionResponses[i].action.toLowerCase() &&
-            (!objectState || !actionResponses[i].state  || actionResponses[i].state.toLowerCase() == objectState.toLowerCase())) {
-        return actionResponses[i]
+function findActionResponse(responses, actionName, objectState) {
+  if (responses) {
+    for (var i=0; i<responses.length; i++) {
+      if (actionName.toLowerCase() == responses[i].action.toLowerCase() &&
+            (!objectState || !responses[i].state  || responses[i].state.toLowerCase() == objectState.toLowerCase())) {
+        return responses[i]
       }
     }
   }

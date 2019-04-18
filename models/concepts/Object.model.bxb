@@ -7,7 +7,7 @@ structure (Object) {
     description("The object's name.")
   }
 
-  property (actionResponses) {
+  property (responses) {
     type (ActionResponse)
     min (Optional) max (Many)
     visibility (Private)

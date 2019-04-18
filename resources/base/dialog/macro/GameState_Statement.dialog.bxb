@@ -9,7 +9,7 @@ template-macro-def (game-state-statement) {
   content {
     if (state.completed) {
       if (state.step < 5) {
-        template ("#{value(state.say)} You did it! That was quick! Good job!")
+        template ("#{value(state.say)} You did it! That was quick! Great job!")
       } else-if (state.step > 10) {
         template ("#{value(state.say)} It took you a while but you did it! Good job!")
       } else {

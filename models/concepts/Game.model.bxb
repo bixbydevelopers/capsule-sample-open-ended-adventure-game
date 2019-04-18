@@ -41,7 +41,7 @@ structure (Game) {
     description ("The default affect of any actions ignoring any context (ignoring the scene and the object they apply too)")
   }
 
-  property (actionResponses) {
+  property (responses) {
     type (ActionResponse)
     min (Optional) max (Many)
     visibility (Private)

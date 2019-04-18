@@ -15,28 +15,27 @@ exports.function = function(state, command) {
 
   var object = lib.findItemByName(scene.objects, objectName)
 
-  var actionResponse
+  var response
   if (object) {
-     actionResponse = lib.findActionResponse(object.actionResponses, actionName, object.state)
+     response = lib.findActionResponse(object.responses, actionName, object.state)
   }
-  if (!actionResponse) {
-    actionResponse = lib.findActionResponse(state.game.actionResponses, actionName, null)
+  if (!response) {
+    response = lib.findActionResponse(state.game.responses, actionName, null)
   }
 
   state.stepsSinceRecognizedCommand = -1 //reset
-  state.say = actionResponse.say
+  state.say = response.say
 
-  if (object && actionResponse.newState) {
-    object.state = actionResponse.newState
+  if (object && response.newState) {
+    object.state = response.newState
   }
 
-  if (actionResponse.newImage) {
-    console.log("newImage", actionResponse.newImage)
-    scene.image.url = actionResponse.newImage
+  if (response.newImage) {
+    scene.image.url = response.newImage
   }
 
-  if (actionResponse.newScene) {
-    var sceneIndex = lib.findIndexByName(state.game.scenes, actionResponse.newScene)
+  if (response.newScene) {
+    var sceneIndex = lib.findIndexByName(state.game.scenes, response.newScene)
     if (sceneIndex >=0) {
       state.sceneIndex = sceneIndex
       state.completed = state.endSceneIndex == sceneIndex

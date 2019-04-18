@@ -1,3 +1,6 @@
+//TODO import actions, objects and scenes
+//TODO Remove enum and use search them (with tags?)
+//Will this go to the prompt every time for unknown inputs if we use open vocab instead of enums?
 module.exports = [
   // Scenes of the adventure game
   {
@@ -15,7 +18,7 @@ module.exports = [
     defaultActionResponse: "Good idea, but let's not do that right now. Try something else.",
     //The default affect of specific actions ignoring any context (ignoring the scene and the object they apply too)
     //The actions should match the symbols in ActionName.model.bxb enum
-    actionResponses: [
+    responses: [
       {action: "See", say: "There is not much to see here."},
       {action: "Feel", say: "There's nothing much to feel here. Oh, what's this? There's something on the wall! It feels like a light switch."},
       {action: "Drink", say: "You think about drinking but then you change your mind."},
@@ -42,7 +45,7 @@ module.exports = [
         {
           name: "Door",
           state: "close",
-          actionResponses: [
+          responses: [
             {action: "See", say: "You spend a few minutes looking at the door until you had enough. Door watching is not your thing."},
             {action: "Feel", say: "The door feels very old and lonely."},
             {action: "Drink", say: "It's not liquid you know."},
@@ -60,7 +63,7 @@ module.exports = [
         {
           name: "LightSwitch",
           state: "off",
-          actionResponses: [
+          responses: [
             {action: "See", say: "It looks like a normal light switch."},
             {action: "Feel", say: "You feel it, it feels good."},
             {action: "Drink", say: "It's a light switch not milk."},
@@ -76,7 +79,7 @@ module.exports = [
         },
         {
           name: "Wall",
-          actionResponses: [
+          responses: [
             {action: "See", say: "You spend a few minutes looking at the wall and conclude that this is no more than an ordinary wall."},
             {action: "Feel", say: "The wall feels cold. Oh, there is something here. It's a light switch!"},
             {action: "Drink", say: "Nope. Not drinkable."},
