@@ -1,0 +1,5 @@
+train (t-zith7qol197z1rbtfytl88gj7) {
+  utterance ("[g:Command:prompt] (Lean)[v:ActionName] on (wall)[v:ObjectName]")
+  plan (Y2BhkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xNxWbrH9SVmpyCViWmYGRgQlIMgBpEIQAEB8sCgA=)
+  last-modified (1555618796803)
+}

@@ -1,0 +1,5 @@
+train (t-96n4kizecxwsji5ptdt256hc0) {
+  utterance ("[g:Command:prompt] (Walk)[v:ActionName] out of the (door)[v:ObjectName]")
+  plan (Y2BhkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xNxWbrH9SVmpyCViWmYGRgQlIMgBpEIQAEB8sCgA=)
+  last-modified (1555628433852)
+}

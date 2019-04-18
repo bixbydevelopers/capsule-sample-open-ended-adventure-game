@@ -10,6 +10,8 @@ vocab(ActionName) {
   "Eat"
   "Talk"
   "Walk"
+  "Run"
+  "Escape"
   "Pick"
   "Drop"
   "Kick"
