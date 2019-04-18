@@ -8,11 +8,11 @@ structure (ActionResponse) {
     description("The applied action.")
   }
 
-  property (state) {
-    type (core.Text)
-    min (Optional) max (One)
+  property (conditions) {
+    type (Condition)
+    min (Optional) max (Many)
     visibility (Private)
-    description("The current state of the object when action is applied.")
+    description("The trigger conditions.")
   }
 
   property (newState) {

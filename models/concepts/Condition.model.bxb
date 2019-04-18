@@ -1,0 +1,15 @@
+structure (Condition) {
+
+  property (state) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("The current state (of the object) when action is applied.")
+  }
+
+  property (object) {
+    type (ObjectName)
+    min (Optional) max (One)
+    visibility (Private)
+  }
+}

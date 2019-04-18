@@ -13,12 +13,10 @@ exports.function = function(state, command) {
     sceneObject = lib.findByName(scene.objects, object.name)
   }
 
-  console.log(action, object, scene.name, sceneObject != null)
-
   var response
   //first search for a response for applying the action to the object in this scene
   if (sceneObject) {
-     response = lib.findActionResponse(sceneObject, action)
+     response = lib.findActionResponse(scene, sceneObject, action)
   }
 
   //next try to see if the object in this scene has a default say (ignoring the action)
@@ -45,8 +43,8 @@ exports.function = function(state, command) {
   state.stepsSinceRecognizedCommand = -1 //reset
   state.say = response.say
 
-  if (object && response.newState) {
-    object.state = response.newState
+  if (sceneObject && response.newState) {
+    sceneObject.state = response.newState
   }
 
   if (response.newImage) {

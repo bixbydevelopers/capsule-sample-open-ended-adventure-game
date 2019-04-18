@@ -43,7 +43,7 @@ function findByName(array, name) {
   return null
 }
 
-function findActionResponse(object, action) {
+function findActionResponse(scene, object, action) {
   if (!object || !action) {
     return null
   }
@@ -51,12 +51,36 @@ function findActionResponse(object, action) {
 
   if (responses) {
     for (var i=0; i<responses.length; i++) {
-      if (action.name.toLowerCase() == responses[i].action.toLowerCase() &&
-            (!object.state || !responses[i].state  || responses[i].state.toLowerCase() == object.state.toLowerCase())) {
+      if (action.name.toLowerCase() == responses[i].action.toLowerCase() && checkConditions(scene, object, responses[i].conditions)) {
         return responses[i]
       }
     }
   }
 
   return null
+}
+
+function checkConditions(scene, object, conditions) {
+  if (!scene || !object || !conditions) {
+    return false
+  }
+
+  for (var i=0; i<conditions.length; i++) {
+    var condition = conditions[i]
+    var sourceState = condition.state
+    var targetState
+    if (!condition.object) {
+      targetState = object.state
+    } else {
+      var targetObject = findByName(scene.objects, condition.object)
+      if (targetObject) {
+        targetState = targetObject.state
+      }
+    }
+    console.log(sourceState, targetState)
+    if (!sourceState || !targetState || targetState.toLowerCase() != sourceState.toLowerCase()) {
+      return false
+    }
+  }
+  return true
 }
