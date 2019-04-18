@@ -1,0 +1,17 @@
+module.exports = {
+   SEE: "See",
+   FEEL: "Feel",
+   DRINK: "Drink",
+   EAT: "Eat",
+   TALK: "Talk",
+   WALK: "Walk",
+   KICK: "Kick",
+   PICK: "Pick",
+   DROP: "Drop",
+   SING: "Sing",
+   OPEN: "Open",
+   CLOSE: "Close",
+   TURN_ON: "TurnOn",
+   TURN_OFF: "TurnOff",
+   HINT: "Hint",
+}

@@ -1,5 +1,5 @@
 train (t-y1atb54rznyyjf9o242oy7vka) {
-  utterance ("[g:Command:prompt] (Open)[v:ActionName:Open] the (door)[v:ObjectName:Door] and walk out")
+  utterance ("[g:Command:prompt] (Open)[v:ActionName] the (door)[v:ObjectName] and walk out")
   plan (Y2BhkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xNxWbrH9SVmpyCViWmYGRgQlIMgBpEIQAEB8sCgA=)
-  last-modified (1555440353205)
+  last-modified (1555548673811)
 }

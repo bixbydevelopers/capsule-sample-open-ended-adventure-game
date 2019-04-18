@@ -1,5 +1,5 @@
 var console = require("console")
-var lib = require("./lib/util");
+var lib = require("./lib/util")
 
 const GAME = require("./data/game");
 

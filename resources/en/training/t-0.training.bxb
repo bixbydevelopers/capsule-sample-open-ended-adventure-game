@@ -1,5 +1,5 @@
 train (t-0ifkzuhd2keiw5i93iwbjmjbn) {
-  utterance ("[g:Command:prompt] (sing)[v:ActionName:Sing] to the (door)[v:ObjectName:Door]")
+  utterance ("[g:Command:prompt] (sing)[v:ActionName] to the (door)[v:ObjectName]")
   plan (Y2BhkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xNxWbrH9SVmpyCViWmYGRgQlIMgBpEIQAEB8sCgA=)
-  last-modified (1555453316711)
+  last-modified (1555548516260)
 }

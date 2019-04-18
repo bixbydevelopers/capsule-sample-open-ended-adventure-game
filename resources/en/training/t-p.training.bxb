@@ -1,5 +1,5 @@
 train (t-pf3bjam2bboq0gjm17nyyt6fc) {
-  utterance ("[g:Command:prompt,v:ActionName:TurnOn] Turn the (lights)[v:ObjectName:LightSwitch] on")
+  utterance ("[g:Command:prompt] Turn the (lights)[v:ObjectName] (on)[v:ActionName]")
   plan (Y2BhkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xNxWbrH9SVmpyCViWmYGRgQlIMgBpEIQAEB8sCgA=)
-  last-modified (1555543247382)
+  last-modified (1555548806458)
 }

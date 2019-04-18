@@ -1,5 +1,5 @@
 train (t-h5bvfyp54dmwf8l7fzsy7hx49) {
-  utterance ("[g:Command:prompt] (Feel)[v:ActionName:Feel] the (light switch)[v:ObjectName:'LightSwitch']")
+  utterance ("[g:Command:prompt] (Feel)[v:ActionName] the (light switch)[v:ObjectName]")
   plan (Y2BhkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xNxWbrH9SVmpyCViWmYGRgQlIMgBpEIQAEB8sCgA=)
-  last-modified (1555453326238)
+  last-modified (1555548728044)
 }

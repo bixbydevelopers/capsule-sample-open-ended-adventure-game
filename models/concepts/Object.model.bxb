@@ -11,7 +11,7 @@ structure (Object) {
     type (ActionResponse)
     min (Optional) max (Many)
     visibility (Private)
-    description ("The affect of specific actions on this action.")
+    description ("The affect of specific actions on this object.")
   }
 
   property (state) {
@@ -21,5 +21,18 @@ structure (Object) {
     description("Current state of the object")
   }
 
+  property (tags) {
+    description (Labels attached to this object to enable searching for the object)
+    type (core.Text)
+    min (Optional) max (Many)
+    visibility (Private)
+  }
+
+  property (say) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("What to say about this object if it is mentioned without specifying an action.")
+  }
 
 }

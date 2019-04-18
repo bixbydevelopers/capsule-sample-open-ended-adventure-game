@@ -1,5 +1,1 @@
-enum (ObjectName) {
-  symbol (Wall)
-  symbol (LightSwitch)
-  symbol (Door)
-}
+name (ObjectName)

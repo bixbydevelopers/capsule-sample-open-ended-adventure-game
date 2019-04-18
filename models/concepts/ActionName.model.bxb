@@ -1,17 +1,1 @@
-enum (ActionName) {
-  symbol (See)
-  symbol (Feel)
-  symbol (Drink)
-  symbol (Eat)
-  symbol (Talk)
-  symbol (Walk)
-  symbol (Kick)
-  symbol (Pick)
-  symbol (Drop)
-  symbol (Sing)
-  symbol (Open)
-  symbol (Close)
-  symbol (TurnOn)
-  symbol (TurnOff)
-  symbol (Hint)
-}
+name (ActionName)

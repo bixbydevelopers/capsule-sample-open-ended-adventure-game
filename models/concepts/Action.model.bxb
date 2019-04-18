@@ -1,0 +1,24 @@
+structure (Action) {
+
+  property (name) {
+    type (ActionName)
+    min (Required) max (One)
+    visibility (Private)
+    description("The action's name.")
+  }
+
+  property (tags) {
+    description (Labels attached to this action to enable searching for the action)
+    type (core.Text)
+    min (Optional) max (Many)
+    visibility (Private)
+  }
+
+  property (say) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("What to say about this action if applied without referring to any object.")
+  }
+
+}

@@ -1,5 +1,5 @@
 train (t-2hgtjhx77q3aab7uk24aazupu) {
-  utterance ([g:Command:prompt,v:ActionName:Hint] What can I do?)
+  utterance ("[g:Command:prompt] (What can I do)[v:ActionName]?")
   plan (Y2BmkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xN5WBiYERiBmAJCMDCDBBMAA=)
-  last-modified (1555454873280)
+  last-modified (1555548855231)
 }

@@ -1,5 +1,8 @@
 vocab (ObjectName) {
-  "Wall" { "wall" }
-  "LightSwitch" { "light switch" "light" "lights" "switch" }
-  "Door" { "door" }
+  "Wall"
+  "light switch"
+  "light" 
+  "lights"
+  "switch"
+  "door"
 }

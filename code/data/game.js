@@ -1,3 +1,8 @@
+const ACT = require("./actions")
+const OBJ = require("./objects")
+const SCENE = require("./scenes")
+const STATE = require("./states")
+
 //TODO import actions, objects and scenes
 //TODO Remove enum and use search them (with tags?)
 //Will this go to the prompt every time for unknown inputs if we use open vocab instead of enums?
@@ -9,98 +14,100 @@ module.exports = [
     name: "Escape Room!",
     //Game starts with this description.
     description: "You wake up in an unfamiliar room. The room is too dark. You can't see anything but you are sure this is not your room.",
-    startScene: "unknown room", //game starts in this scene
-    endScene: "bright room", //game ends when user enters this scene
+    startScene: SCENE.UNKNOWN_ROOM, //game starts in this scene
+    endScene: SCENE.BRIGHT_ROOM, //game ends when user enters this scene
 
-    //What is the default action to take if user command does not include an action name, e.g. if user just says "door!" and defaultAction is "see" then user command will be interpreted as applying "See" to "Door"
-    defaultActionName: "See",
-    //The default affect of any action ignoring any context (ignoring the scene and the object they apply too)
-    defaultActionResponse: "Good idea, but let's not do that right now. Try something else.",
-    //The default affect of specific actions ignoring any context (ignoring the scene and the object they apply too)
-    //The actions should match the symbols in ActionName.model.bxb enum
-    responses: [
-      {action: "See", say: "There is not much to see here."},
-      {action: "Feel", say: "There's nothing much to feel here. Oh, what's this? There's something on the wall! It feels like a light switch."},
-      {action: "Drink", say: "You think about drinking but then you change your mind."},
-      {action: "Eat", say: "I'm not sure that's really something you want to eat right now."},
-      {action: "Talk", say: "There is no one here to talk to."},
-      {action: "Walk", say: "You walk a few steps and... bang! You hit a wall!"},
-      {action: "Kick", say: "Kicking won't help here, this is not a soccer game!"},
-      {action: "Pick", say: "You look around for something to pick but don't find anything!"},
-      {action: "Drop", say: "Nothing to drop here."},
-      {action: "Sing", say: "You sing your favorite song: 'the wheels on the bus go round and round'. You can sing that all day. What a great song!"},
-      {action: "Open", say: "This is nothing you can open."},
-      {action: "Close", say: "This is nothing you can close."},
-      {action: "TurnOn", say: "You can't turn this on. Try something else."},
-      {action: "TurnOff", say: "You can't turn this off. Try something else."},
-      {action: "Hint", say:  "You can see, feel, drink, eat, pick, drop, kick, walk, talk and sing. Try those on the objects in the room and see what happens."},
+    //list of actions in the game, tags to match the action and what to say if user tries to apply the action without referring to any object
+    actions: [
+       {name: ACT.SEE, tags: ["see", "look at", "look"], say: "There is not much to see here."},
+       {name: ACT.FEEL, tags: ["feel", "touch"], say: "There's nothing much to feel here. Oh, what's this? There's something on the wall! It feels like a light switch."},
+       {name: ACT.DRINK, tags: ["drink"], say: "You think about drinking but then you change your mind."},
+       {name: ACT.EAT, tags: ["eat"], say: "You look around for something to eat but you don't find anything. You are not that hungry anyway."},
+       {name: ACT.TALK, tags: ["talk", "speak", "say"], say: "There is no one here to talk to."},
+       {name: ACT.WALK, tags: ["walk", "stroll"], say: "You walk a few steps and... bang! You hit a wall!"},
+       {name: ACT.KICK, tags: ["kick"], say: "Kicking won't help here, this is not a soccer game!"},
+       {name: ACT.PICK, tags: ["pick"], say: "You look around for something to pick but don't find anything!"},
+       {name: ACT.DROP, tags: ["drop"], say: "Nothing to drop here."},
+       {name: ACT.SING, tags: ["sing"], say: "You sing your favorite song: 'the wheels on the bus go round and round'. You can sing that all day. What a great song!"},
+       {name: ACT.OPEN, tags: ["open"], say: "This is nothing you can open."},
+       {name: ACT.CLOSE, tags: ["close"], say: "This is nothing you can close."},
+       {name: ACT.TURN_ON, tags: ["turn on", "switch on", "on"], say: "You can't turn this on. Try something else."},
+       {name: ACT.TURN_OFF, tags: ["turn off", "switch off", "off"], say: "You can't turn this off. Try something else."},
+       {name: ACT.HINT, tags: ["help", "hint", "what can I do"], say:  "You can see, feel, drink, eat, pick, drop, kick, walk, talk and sing. Try those on the objects in the room and see what happens."},
     ],
+
+    //list of objects in the game, tags to match the object and what to say if user refers to any object without specifying an action
+    objects: [
+       {name: OBJ.DOOR, tags: ["door"], say: "You spend a few minutes looking at the door until you had enough. Door watching is not your thing."},
+       {name: OBJ.LIGHT_SWITCH, tags: ["light switch", "lights", "light", "switch"], say: "It looks like a normal light switch."},
+       {name: OBJ.WALL, tags: ["wall"], say: "You spend a few minutes looking at the wall and conclude that this is no more than an ordinary wall."},
+    ],
+
     scenes: [
     {
-      name: "Unknown room", //scene name
+      name: SCENE.UNKNOWN_ROOM, //scene name
       image: {
         url: '/images/emptyRoom_lightsOff.jpg' //scene image
       },
       objects: [ //objects in the dark room, object names should match the symbols in ObjectName.model.bxb enum
         {
-          name: "Door",
+          name: OBJ.DOOR,
           state: "close",
           responses: [
-            {action: "See", say: "You spend a few minutes looking at the door until you had enough. Door watching is not your thing."},
-            {action: "Feel", say: "The door feels very old and lonely."},
-            {action: "Drink", say: "It's not liquid you know."},
-            {action: "Eat", say: "Hmmm, seems you are very hungry but this door doesn't taste that good."},
-            {action: "Talk", say: "I didn't know you are that lonely."},
-            {action: "Pick", say: "The door is too heavy."},
-            {action: "Kick", state: "close", say: "Bang! You kicked the closed door. It's still close. There should be a better way to open the door."},
-            {action: "Kick", state: "open", newState: "close", say: "Bang! You shut the door close. That did hurt a little."},
-            {action: "Sing", say: "You sing to the door. You don't have the best voice but I think the door liked it."},
-            {action: "Open", state: "close", newState: "open", newScene: "bright room", say: "You open the door, there is another room. You walk over to the new room. Yes! This is your bright and beautiful room!"},
-            {action: "TurnOn", say: "You can't turn the door on. You can open or close it. I thought you'd know that."},
-            {action: "TurnOff", say: "Ok, it's turned off. Not really. You should know better."},
+            {action: ACT.SEE, say: "You spend a few minutes looking at the door until you had enough. Door watching is not your thing."},
+            {action: ACT.FEEL, say: "The door feels very old and lonely."},
+            {action: ACT.DRINK, say: "It's not liquid you know."},
+            {action: ACT.EAT, say: "Hmmm, seems you are very hungry but this door doesn't taste that good."},
+            {action: ACT.TALK, say: "I didn't know you are that lonely."},
+            {action: ACT.PICK, say: "The door is too heavy."},
+            {action: ACT.KICK, state: STATE.CLOSE, say: "Bang! You kicked the closed door. It's still close. There should be a better way to open the door."},
+            {action: ACT.KICK, state: STATE.OPEN, newState: "close", say: "Bang! You shut the door close. That did hurt a little."},
+            {action: ACT.SING, say: "You sing to the door. You don't have the best voice but I think the door liked it."},
+            {action: ACT.OPEN, state: "close", newState: STATE.OPEN, newScene: SCENE.BRIGHT_ROOM, say: "You open the door, there is another room. You walk over to the new room. Yes! This is your bright and beautiful room!"},
+            {action: ACT.TURN_ON, say: "You can't turn the door on. You can open or close it. I thought you'd know that."},
+            {action: ACT.TURN_OFF, say: "Ok, it's turned off. Not really. You should know better."},
           ]
         },
         {
-          name: "LightSwitch",
-          state: "off",
+          name: OBJ.LIGHT_SWITCH,
+          state: STATE.OFF,
           responses: [
-            {action: "See", say: "It looks like a normal light switch."},
-            {action: "Feel", say: "You feel it, it feels good."},
-            {action: "Drink", say: "It's a light switch not milk."},
-            {action: "Eat", say: "This is not something you want to eat."},
-            {action: "Talk", say: "Hello light switch, how are you doing today?.... so rude, no answer."},
-            {action: "Pick", say: "You can't pick it. It's attached to the wall."},
-            {action: "Kick", say: "It's too high for you to kick it. There should be a better way to operate this thing. Hmmm."},
-            {action: "TurnOn", state: "on", say: "The light is already on! What an ugly room. Nothing here but a door."},
-            {action: "TurnOn", state: "off", newState: "on", newImage:"/images/emptyRoom_lightsOn.jpg", say: "Click. Light! Ooh look the room is empty. But there is a door."},
-            {action: "TurnOff", state: "on", newState: "off", newImage:"/images/emptyRoom_lightsOff.jpg", say: "Click. Darkness! You can't see anything anymore."},
-            {action: "TurnOff", state: "off", say: "It's already off."},
+            {action: ACT.SEE, say: "It looks like a normal light switch."},
+            {action: ACT.FEEL, say: "You feel it, it feels good."},
+            {action: ACT.DRINK, say: "It's a light switch not milk."},
+            {action: ACT.EAT, say: "This is not something you want to eat."},
+            {action: ACT.TALK, say: "Hello light switch, how are you doing today?.... so rude, no answer."},
+            {action: ACT.PICK, say: "You can't pick it. It's attached to the wall."},
+            {action: ACT.KICK, say: "It's too high for you to kick it. There should be a better way to operate this thing. Hmmm."},
+            {action: ACT.TURN_ON, state: STATE.ON, say: "The light is already on! What an ugly room. Nothing here but a door."},
+            {action: ACT.TURN_ON, state: STATE.OFF, newState: STATE.ON, newImage:"/images/emptyRoom_lightsOn.jpg", say: "Click. Light! Ooh look the room is empty. But there is a door."},
+            {action: ACT.TURN_OFF, state: STATE.ON, newState: STATE.OFF, newImage:"/images/emptyRoom_lightsOff.jpg", say: "Click. Darkness! You can't see anything anymore."},
+            {action: ACT.TURN_OFF, state: STATE.OFF, say: "It's already off."},
           ]
         },
         {
-          name: "Wall",
+          name: OBJ.WALL,
           responses: [
-            {action: "See", say: "You spend a few minutes looking at the wall and conclude that this is no more than an ordinary wall."},
-            {action: "Feel", say: "The wall feels cold. Oh, there is something here. It's a light switch!"},
-            {action: "Drink", say: "Nope. Not drinkable."},
-            {action: "Eat", say: "You cannot eat the wall! Maybe you'll find something more tasty on the other side of the wall. But how to get there?"},
-            {action: "Talk", say: "Don't do that. People will think you are mad."},
-            {action: "Pick", say: "The wall is too heavy."},
-            {action: "Kick", say: "Ouch! That was not a good idea."},
-            {action: "Sing", say: "You sing from the bottom of your heart. You can strike that off your bucket list now."},
-            {action: "Open", say: "'Open Sesame!'. Nope. That didn't work."},
-            {action: "TurnOn", say: "Hmmm, you can't find a switch on that to turn it on."},
-            {action: "Turnoff", say: "Hmmm, you can't find a switch on that to turn it off."},
+            {action: ACT.SEE, say: "You spend a few minutes looking at the wall and conclude that this is no more than an ordinary wall."},
+            {action: ACT.FEEL, say: "The wall feels cold. Oh, there is something here. It's a light switch!"},
+            {action: ACT.DRINK, say: "Nope. Not drinkable."},
+            {action: ACT.EAT, say: "You cannot eat the wall! Maybe you'll find something more tasty on the other side of the wall. But how to get there?"},
+            {action: ACT.TALK, say: "Don't do that. People will think you are mad."},
+            {action: ACT.PICK, say: "The wall is too heavy."},
+            {action: ACT.KICK, say: "Ouch! That was not a good idea."},
+            {action: ACT.SING, say: "You sing from the bottom of your heart. You can strike that off your bucket list now."},
+            {action: ACT.OPEN, say: "'Open Sesame!'. Nope. That didn't work."},
+            {action: ACT.TURN_ON, say: "Hmmm, you can't find a switch on that to turn it on."},
+            {action: ACT.TURN_OFF, say: "Hmmm, you can't find a switch on that to turn it off."},
           ]
         }
       ]
     },
     {
-      name: "Bright room", //scene name
+      name: SCENE.BRIGHT_ROOM, //scene name
       image: {
         url: '/images/brightRoom.jpg' //scene image
       },
-      objects: []
     }
     ]
   },

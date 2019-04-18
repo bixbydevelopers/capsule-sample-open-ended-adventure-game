@@ -1,17 +1,29 @@
 vocab(ActionName) {
-  "See" { "See" "Look at" "Look"`}
-  "Feel" { "Feel" "Touch" }
-  "Drink" { "Drink" }
-  "Eat" { "Eat" }
-  "Talk" { "Talk" }
-  "Walk" { "Walk" }
-  "Pick" { "Pick" "Pick up" }
-  "Drop" { "Drop" }
-  "Kick" { "Kick" }
-  "Sing" { "Sing" }
-  "Open" { "Open" }
-  "Close" { "Close" }
-  "TurnOn" { "Turn on" "Switch on" }
-  "TurnOff" { "Turn off" "Switch off" }
-  "Hint" { "Hint" "Help" }
+  "See"
+  "Look at"
+  "Look"
+  
+  "Feel"
+  "Touch"
+
+  "Drink"
+  "Eat"
+  "Talk"
+  "Walk"
+  "Pick"
+  "Drop"
+  "Kick"
+  "Sing"
+  "Open"
+  "Close"
+  
+  "Turn On"
+  "On"
+  
+  "Turn Off"
+  "Off"
+  
+  "Hint"
+  "Help"
+  "What can I do"
 }

@@ -1,5 +1,5 @@
 train (t-oewslus1kjq72i90lkt7l3oi1) {
-  utterance ("[g:Command:prompt] Get up and (walk)[v:ActionName:Walk] forward")
+  utterance ("[g:Command:prompt] Get up and (walk)[v:ActionName] forward")
   plan (Y2BmkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4OpxjG5JDM/zy8xN5WBiYERiBmAJCMDCDBBMAA=)
-  last-modified (1555455442743)
+  last-modified (1555548765115)
 }

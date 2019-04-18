@@ -1,5 +1,5 @@
 train (t-ibwxslae3vsc3vcqt5zerm9c3) {
-  utterance ("[g:Command:prompt] (Light switch)[v:ObjectName:LightSwitch]")
+  utterance ("[g:Command:prompt] (Light switch)[v:ObjectName]")
   plan (Y2BmkEytSMwtyEnVS0wpS80rKS1K1XPOz81NzEthUMImlVdcUlSaXAJTI4Opxj8pKzW5xC8xN5WBiYERiBmAJCMDCDBBMAA=)
-  last-modified (1555454907852)
+  last-modified (1555548736018)
 }
