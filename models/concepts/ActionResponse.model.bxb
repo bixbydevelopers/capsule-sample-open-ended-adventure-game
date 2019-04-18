@@ -15,25 +15,11 @@ structure (ActionResponse) {
     description("The trigger conditions.")
   }
 
-  property (newState) {
-    type (core.Text)
+  property (affect) {
+    type (Affect)
     min (Optional) max (One)
     visibility (Private)
-    description("The new state of the object when action is applied.")
-  }
-
-  property (newScene) {
-    type (core.Text)
-    min (Optional) max (One)
-    visibility (Private)
-    description("The new scene, if user enters a new scene after action is applied.")
-  }
-
-  property (newImage) {
-    type (core.Text)
-    min (Optional) max (One)
-    visibility (Private)
-    description("New image URL to display after applying the action.")
+    description("The affect of applying the action.")
   }
 
   property (say) {

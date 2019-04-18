@@ -1,4 +1,5 @@
 structure (Condition) {
+  description (A condition for applying an action)
 
   property (state) {
     type (core.Text)
@@ -11,5 +12,6 @@ structure (Condition) {
     type (ObjectName)
     min (Optional) max (One)
     visibility (Private)
+    description ("The object which it's state is to be checked")
   }
 }

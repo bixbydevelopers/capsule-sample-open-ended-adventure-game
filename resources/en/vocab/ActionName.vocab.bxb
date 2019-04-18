@@ -26,4 +26,6 @@ vocab(ActionName) {
   "Hint"
   "Help"
   "What can I do"
+  
+  "Lean"
 }

@@ -77,7 +77,6 @@ function checkConditions(scene, object, conditions) {
         targetState = targetObject.state
       }
     }
-    console.log(sourceState, targetState)
     if (!sourceState || !targetState || targetState.toLowerCase() != sourceState.toLowerCase()) {
       return false
     }

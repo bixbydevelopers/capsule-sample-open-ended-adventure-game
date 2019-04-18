@@ -3,9 +3,6 @@ const OBJ = require("./objects")
 const SCENE = require("./scenes")
 const STATE = require("./states")
 
-//TODO import actions, objects and scenes
-//TODO Remove enum and use search them (with tags?)
-//Will this go to the prompt every time for unknown inputs if we use open vocab instead of enums?
 module.exports = [
   // Scenes of the adventure game
   {
@@ -20,9 +17,9 @@ module.exports = [
     //list of actions in the game, tags to match the action and what to say if user tries to apply the action without referring to any object
     actions: [
        {name: ACT.SEE, tags: ["see", "look at", "look"], say: "There is not much to see here."},
-       {name: ACT.FEEL, tags: ["feel", "touch"], say: "There's nothing much to feel here. Oh, what's this? There's something on the wall! It feels like a light switch."},
-       {name: ACT.DRINK, tags: ["drink"], say: "You think about drinking but then you change your mind."},
-       {name: ACT.EAT, tags: ["eat"], say: "You look around for something to eat but you don't find anything. You are not that hungry anyway."},
+       {name: ACT.FEEL, tags: ["feel", "touch"], say: "There's nothing much to feel. Oh, what's this? There's something on the wall! It feels like a light switch."},
+       {name: ACT.DRINK, tags: ["drink"], say: "Not sure if you want to drink anything right now."},
+       {name: ACT.EAT, tags: ["eat"], say: "Not sure if you want to eat anything right now. You are not that hungry anyway."},
        {name: ACT.TALK, tags: ["talk", "speak", "say"], say: "There is no one here to talk to."},
        {name: ACT.WALK, tags: ["walk", "stroll"], say: "You walk a few steps and... bang! You hit a wall!"},
        {name: ACT.KICK, tags: ["kick"], say: "Kicking won't help here, this is not a soccer game!"},
@@ -34,6 +31,7 @@ module.exports = [
        {name: ACT.TURN_ON, tags: ["turn on", "switch on", "on"], say: "You can't turn this on. Try something else."},
        {name: ACT.TURN_OFF, tags: ["turn off", "switch off", "off"], say: "You can't turn this off. Try something else."},
        {name: ACT.HINT, tags: ["help", "hint", "what can I do"], say:  "You can see, feel, drink, eat, pick, drop, kick, walk, talk and sing. Try those on the objects in the room and see what happens."},
+       {name: ACT.LEAN, tags: ["lean"], say:  "Not sure how you want to lean on that."},
     ],
 
     //list of objects in the game, tags to match the object and what to say if user refers to any object without specifying an action
@@ -61,9 +59,9 @@ module.exports = [
             {action: ACT.TALK, say: "I didn't know you are that lonely."},
             {action: ACT.PICK, say: "The door is too heavy."},
             {action: ACT.KICK, conditions: [{state: STATE.CLOSE}], say: "Bang! You kicked the closed door. It's still close. There should be a better way to open the door."},
-            {action: ACT.KICK, conditions: [{state: STATE.OPEN}], newState: "close", say: "Bang! You shut the door close. That did hurt a little."},
+            {action: ACT.KICK, conditions: [{state: STATE.OPEN}], affect: {newState: STATE.CLOSE}, say: "Bang! You shut the door close. That did hurt a little."},
             {action: ACT.SING, say: "You sing to the door. You don't have the best voice but I think the door liked it."},
-            {action: ACT.OPEN, conditions: [{state: STATE.CLOSE}, {object: OBJ.LIGHT_SWITCH, state: STATE.ON}], newState: STATE.OPEN, newScene: SCENE.BRIGHT_ROOM, say: "You open the door, there is another room. You walk over to the new room. Yes! This is your bright and beautiful room!"},
+            {action: ACT.OPEN, conditions: [{state: STATE.CLOSE}, {object: OBJ.LIGHT_SWITCH, state: STATE.ON}], affect: {newState: STATE.OPEN, newScene: SCENE.BRIGHT_ROOM}, say: "You open the door, there is another room. You walk over to the new room. Yes! This is your bright and beautiful room!"},
             {action: ACT.OPEN, conditions: [{state: STATE.CLOSE}, {object: OBJ.LIGHT_SWITCH, state: STATE.OFF}], say: "Great idea! But it's too dark, you can't find the door handle!"},
             {action: ACT.TURN_ON, say: "You can't turn the door on. You can open or close it. I thought you'd know that."},
             {action: ACT.TURN_OFF, say: "Ok, it's turned off. Not really. You should know better."},
@@ -81,8 +79,8 @@ module.exports = [
             {action: ACT.PICK, say: "You can't pick it. It's attached to the wall."},
             {action: ACT.KICK, say: "It's too high for you to kick it. There should be a better way to operate this thing. Hmmm."},
             {action: ACT.TURN_ON, conditions: [{state: STATE.ON}], say: "The light is already on! What an ugly room. Nothing here but a door."},
-            {action: ACT.TURN_ON, conditions: [{state: STATE.OFF}], newState: STATE.ON, newImage:"/images/emptyRoom_lightsOn.jpg", say: "Click. Light! Ooh look the room is empty. But there is a door."},
-            {action: ACT.TURN_OFF, conditions: [{state: STATE.ON}], newState: STATE.OFF, newImage:"/images/emptyRoom_lightsOff.jpg", say: "Click. Darkness! You can't see anything anymore."},
+            {action: ACT.TURN_ON, conditions: [{state: STATE.OFF}], affect: {newState: STATE.ON, newSceneImage:"/images/emptyRoom_lightsOn.jpg"}, say: "Click. Light! Ooh look the room is empty. But there is a door."},
+            {action: ACT.TURN_OFF, conditions: [{state: STATE.ON}], affect: {newState: STATE.OFF, newSceneImage:"/images/emptyRoom_lightsOff.jpg"}, say: "Click. Darkness! You can't see anything anymore."},
             {action: ACT.TURN_OFF, conditions: [{state: STATE.OFF}], say: "It's already off."},
           ]
         },
@@ -100,6 +98,8 @@ module.exports = [
             {action: ACT.OPEN, say: "'Open Sesame!'. Nope. That didn't work."},
             {action: ACT.TURN_ON, say: "Hmmm, you can't find a switch on that to turn it on."},
             {action: ACT.TURN_OFF, say: "Hmmm, you can't find a switch on that to turn it off."},
+            {action: ACT.LEAN, conditions: [{object: OBJ.LIGHT_SWITCH, state: STATE.OFF}], affect: {newSceneImage:"/images/emptyRoom_lightsOn.jpg", newExternalStates: [{object: OBJ.LIGHT_SWITCH, newState: STATE.ON}]}, say: "You lean on the wall. Oh what happened? You accidentally leaned on a light switch and turned it on. What an ugly room. Nothing here but a door."},
+            {action: ACT.LEAN, conditions: [{object: OBJ.LIGHT_SWITCH, state: STATE.ON}], affect: {newSceneImage:"/images/emptyRoom_lightsOff.jpg", newExternalStates: [{object: OBJ.LIGHT_SWITCH, newState: STATE.OFF}]}, say: "You lean on the wall. Oh what happened? You accidentally leaned on a light switch and turned it off. Everything is dark again."},
           ]
         }
       ]

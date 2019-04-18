@@ -13,5 +13,6 @@ module.exports = {
    CLOSE: "Close",
    TURN_ON: "TurnOn",
    TURN_OFF: "TurnOff",
+   LEAN: "Lean",
    HINT: "Hint",
 }

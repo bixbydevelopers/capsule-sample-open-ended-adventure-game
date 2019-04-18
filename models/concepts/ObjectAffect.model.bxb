@@ -1,0 +1,25 @@
+structure (ObjectAffect) {
+  extends (Affect)
+  description (An affect on an object after applying an action)
+
+  property (state) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("The new state of an object.")
+  }
+
+  property (scene) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("Which scene which it's object state is to be changed.")
+  }
+
+  property (object) {
+    type (ObjectName)
+    min (Optional) max (One)
+    visibility (Private)
+    description ("The object which it's state is to be changed")
+  }
+}

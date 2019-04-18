@@ -1,0 +1,31 @@
+structure (Affect) {
+  description (An affect of applying an action to an object)
+
+  property (newScene) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("The new scene, if user enters a new scene after action is applied.")
+  }
+
+  property (newSceneImage) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("New image URL to display in the scene after applying the action.")
+  }
+
+  property (newState) {
+    type (core.Text)
+    min (Optional) max (One)
+    visibility (Private)
+    description("The new state of the object when action is applied.")
+  }
+
+  property (newExternalStates) {
+    type (ObjectAffect)
+    min (Optional) max (Many)
+    visibility (Private)
+    description("The new state of other objects in this scene when action is applied.")
+  }
+}

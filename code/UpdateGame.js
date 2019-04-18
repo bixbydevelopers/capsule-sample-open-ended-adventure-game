@@ -24,40 +24,67 @@ exports.function = function(state, command) {
      response = {say: sceneObject.say}
   }
 
-  //next try to see if the object has a default say (ignoring the scene and the action)
-  if  (!response && object && object.say) {
-     response = {say: object.say}
-  }
-
-  //finally check if the action has a default say (ignoring the scene and the object)
+  //next check if the action has a default say (ignoring the scene and the object)
   if (!response && action && action.say) {
     response = {say: action.say}
+  }
+
+  //finally try to see if the object has a default say (ignoring the scene and the action)
+  if  (!response && object && object.say) {
+     response = {say: object.say}
   }
 
   //if still no response found then increment steps since last recognized command and return state
   if (!response) {
     state.stepsSinceRecognizedCommand++
-    return state
+  } else {
+    state.stepsSinceRecognizedCommand = -1 //reset
+    state.say = response.say
+    applyAffect(state, scene, sceneObject, response.affect)
   }
 
-  state.stepsSinceRecognizedCommand = -1 //reset
-  state.say = response.say
-
-  if (sceneObject && response.newState) {
-    sceneObject.state = response.newState
-  }
-
-  if (response.newImage) {
-    scene.image.url = response.newImage
-  }
-
-  if (response.newScene) {
-    var sceneIndex = lib.findIndexByName(state.game.scenes, response.newScene)
-    if (sceneIndex >=0) {
-      state.sceneIndex = sceneIndex
-      state.completed = state.endSceneIndex == sceneIndex
-    }
-  }
 
   return state
+}
+
+function applyAffect(gameState, scene, sceneObject, affect) {
+  //apply the response effect
+  if (affect) {
+
+    if (affect.newState && sceneObject) {
+      sceneObject.state = affect.newState
+    }
+
+    if (affect.newSceneImage) {
+      scene.image.url = affect.newSceneImage
+    }
+
+    if (affect.newScene) {
+      var sceneIndex = lib.findIndexByName(gameState.game.scenes, affect.newScene)
+      if (sceneIndex >=0) {
+        gameState.sceneIndex = sceneIndex
+        gameState.completed = gameState.endSceneIndex == sceneIndex
+      }
+    }
+
+    if (affect.newExternalStates) {
+      for (var i=0; i<affect.newExternalStates.length; i++) {
+        changeExternalState(gameState, affect.newExternalStates[i].scene, affect.newExternalStates[i].object, affect.newExternalStates[i].newState)
+      }
+    }
+
+  }
+}
+
+function changeExternalState(gameState, sceneName, objectName, newState) {
+  var scene
+  if (!sceneName) {
+    scene = gameState.game.scenes[gameState.sceneIndex]
+  } else {
+    scene = lib.findByName(gameState.game.scenes, sceneName)
+  }
+  if (scene) {
+    object = lib.findByName(scene.objects, objectName)
+  }
+  object.state = newState
 }
