@@ -45,7 +45,7 @@ module.exports = [
     {
       name: SCENE.UNKNOWN_ROOM, //scene name
       image: {
-        url: '/images/emptyRoom_lightsOff.jpg' //scene image
+        url: '/images/emptyRoom_lightsOff.jpeg' //scene image
       },
       objects: [ //objects in the dark room, object names should match the symbols in ObjectName.model.bxb enum
         {
@@ -80,8 +80,8 @@ module.exports = [
             {action: ACT.PICK, say: "You can't pick it. It's attached to the wall."},
             {action: ACT.KICK, say: "It's too high for you to kick it. There should be a better way to operate this thing. Hmmm."},
             {action: ACT.TURN_ON, conditions: [{state: STATE.ON}], say: "The light is already on! What an ugly room. Nothing here but a door."},
-            {action: ACT.TURN_ON, conditions: [{state: STATE.OFF}], affect: {newState: STATE.ON, newSceneImage:"/images/emptyRoom_lightsOn.jpg"}, say: "Click. Light! Ooh look the room is empty. But there is a door."},
-            {action: ACT.TURN_OFF, conditions: [{state: STATE.ON}], affect: {newState: STATE.OFF, newSceneImage:"/images/emptyRoom_lightsOff.jpg"}, say: "Click. Darkness! You can't see anything anymore."},
+            {action: ACT.TURN_ON, conditions: [{state: STATE.OFF}], affect: {newState: STATE.ON, newSceneImage:"/images/emptyRoom_lightsOn.jpeg"}, say: "Click. Light! Ooh look the room is empty. But there is a door."},
+            {action: ACT.TURN_OFF, conditions: [{state: STATE.ON}], affect: {newState: STATE.OFF, newSceneImage:"/images/emptyRoom_lightsOff.jpeg"}, say: "Click. Darkness! You can't see anything anymore."},
             {action: ACT.TURN_OFF, conditions: [{state: STATE.OFF}], say: "It's already off."},
           ]
         },
@@ -108,7 +108,7 @@ module.exports = [
     {
       name: SCENE.BRIGHT_ROOM, //scene name
       image: {
-        url: '/images/brightRoom.jpg' //scene image
+        url: '/images/BrightRoom.jpeg' //scene image
       },
     }
     ]
