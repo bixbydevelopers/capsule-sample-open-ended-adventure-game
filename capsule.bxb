@@ -1,5 +1,5 @@
 capsule {
-  id (example.adventure)
+  id (example.adventure_game)
   version (1.0.0)
   format(3)
   runtime-flags {

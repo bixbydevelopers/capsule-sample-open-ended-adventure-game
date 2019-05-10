@@ -9,16 +9,22 @@ exports.findElementByTag = findElementByTag
 function findElementByTag(array, tag) {
    if (tag && array) {
      for (var i=0; i<array.length; i++) {
-        if (array[i].tags) {
-          for (var j=0; j<array[i].tags.length; j++) {
-            if (tag.toLowerCase() == array[i].tags[j].toLowerCase()) {
-               return array[i]
-            }
-          }
+        if (matchTag(array[i].tags, tag)) {
+           return array[i]
         }
      }
    }
    return null
+}
+
+//returns true if there is an element in a list of tags that matches a specific tag
+function matchTag(tags, tag) {
+   for (var i=0; i<tags.length; i++) {
+     if (tag.toLowerCase() == tags[i].toLowerCase()) {
+        return true
+     }
+   }
+   return false
 }
 
 //finds the first index of an element with a specific name in an array
