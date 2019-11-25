@@ -1,30 +1,32 @@
 input-view {
-  match {
-    Command {
-      to-input: UpdateGame {
-        from-input: GameState (state)
-      }
-    }
-  }
-
-  message {
-    template-macro (update-game-question) {
-      param (state) {
-        expression (state)
-      }
-    }
-  }
-  
-  render {
-    //TODO find YT about headers
-    //This is a work-around to show a layout-macro even though there is no selection taking place here
-    selection-of (state) {
-      where-each (s) {
-        layout-macro ("game-state") {
-          param (state) { expression (s)}
-        }
-      }
-    }
-    
-  }
+	match {
+		Command {
+			to-input: UpdateGame {
+				from-input: GameState (state)
+			}
+		}
+	}
+	
+	message {
+		template-macro (update-game-question) {
+			param (state) {
+				if(exists(state) && size(state)==1) { //should always be true
+					expression (state)
+				}
+			}
+		}
+	}
+	
+	render {
+		//TODO find YT about headers
+		//This is a work-around to show a layout-macro even though there is no selection taking place here
+		selection-of (state) {
+			where-each (s) {
+				layout-macro ("game-state") {
+					param (state) { expression (s)}
+				}
+			}
+		}
+		
+	}
 }
