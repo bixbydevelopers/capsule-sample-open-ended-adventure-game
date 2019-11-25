@@ -1,13 +1,15 @@
 result-view {
-  match {
-    Game(game)
-  }
-
-  render {
-    layout-macro ("game") {
-      param(game) {
-        expression (game)
-      }
-    }
-  }
+	match {
+		Game(game)
+	}
+	
+	render {
+		layout-macro ("game") {
+			param(game) {
+				if(exists(game) && size(game)==1){ //should always be true
+					expression (game)
+				}
+			}
+		}
+	}
 }

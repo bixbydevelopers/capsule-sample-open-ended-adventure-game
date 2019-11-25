@@ -1,13 +1,15 @@
 result-view {
-  match {
-    GameState(state)
-  }
-
-  render {
-    layout-macro ("game-state") {
-      param(state) {
-        expression (state)
-      }
-    }
-  }
+	match {
+		GameState(state)
+	}
+	
+	render {
+		layout-macro ("game-state") {
+			param(state) {
+				if(exists(state) && size(state)==1) { //should always be true
+					expression (state)
+				}
+			}
+		}
+	}
 }
