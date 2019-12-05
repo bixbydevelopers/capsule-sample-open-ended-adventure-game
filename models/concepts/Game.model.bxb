@@ -9,7 +9,7 @@ structure (Game) {
 
   property (image) {
     description (Image describing this game)
-    type (image.Image)
+    type (core.BaseImage)
     min (Optional) max (One)
     visibility (Private)
   }
