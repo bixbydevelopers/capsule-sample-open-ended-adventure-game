@@ -9,7 +9,7 @@ structure (Scene) {
 
   property (image) {
     description (Image depicting this scene)
-    type (image.Image)
+    type (core.BaseImage)
     min (Optional) max (One)
     visibility (Private)
   }
