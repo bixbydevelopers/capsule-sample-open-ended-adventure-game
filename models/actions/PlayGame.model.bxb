@@ -11,7 +11,7 @@ action (PlayGame) {
         }
       }
       validate {
-        if (!state.completed) {
+        if (exists(state.completed) && !state.completed) {
           replan {
             intent {
               goal: UpdateGame
