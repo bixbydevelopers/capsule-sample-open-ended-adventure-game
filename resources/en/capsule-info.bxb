@@ -1,15 +1,13 @@
-//Remove comments below and customize
-
-//description {
-//  name (MyGame)
-//  websiteUrl (<your-website-url>)
-//  iconUrl (<your-icon-url>)
-//  description (<your-description>)
-//  displayName (<your-display-name>)
-//  companyName (<your-company-name>)
-//  dispatch-name (my game)
-//  dispatch-aliases {
-//    alias (<your-alias-1>)
-//    alias (<your-alias-2>)
-//  }
-//}
+capsule-info {
+  display-name (Adventure Game Sample Capsule)
+  dispatch-name (Adventure Game Sample Capsule)
+  developer-name (Bixby Sample Capsules)
+  icon-asset (/images/bixby-logo.png)
+  description ("A sample capsule to demonstrate an open ended adventure game.")
+  website-url (https://bixbydevelopers.com/dev/docs/sample-capsules/samples)
+  search-keywords {
+    keyword (sample capsule)
+    keyword (Adventure Game)
+  }
+  privacy-policy-url (http://my-capsule.com/privacy-policy)
+}
