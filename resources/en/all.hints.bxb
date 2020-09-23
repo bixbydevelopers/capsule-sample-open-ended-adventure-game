@@ -1,0 +1,7 @@
+hints {
+  uncategorized {
+    hint (Start Adventure Game Sample Capsule)
+    hint (Talk to Adventure Game Sample Capsule)
+    hint (With Adventure Game Sample Capsule, start an adventure game)
+  }
+}
