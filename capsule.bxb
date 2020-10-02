@@ -2,7 +2,7 @@ capsule {
   id (example.adventure_game)
   version (1.0.0)
   format(3)
-  runtime-version (2) 
+  runtime-version (8) 
   targets {
     target (bixby-mobile-en-US)
   }

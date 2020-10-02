@@ -2,6 +2,16 @@ result-view {
 	match {
 		GameState(state)
 	}
+
+	message {
+		template-macro (game-state-statement) {
+			param (state) {
+				if(exists(state) && size(state)==1) { //should always be true
+					expression (state)
+				}
+			}
+		}
+	}
 	
 	render {
 		layout-macro ("game-state") {
